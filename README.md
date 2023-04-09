@@ -33,47 +33,82 @@ STEP 8
 Save the final data set into the file
 PROGRAM
 
-Name : DHARSHINI DS
-Register Number : 212221230022
-
 import pandas as pd
+
 import numpy as np
+
 import seaborn as sns
+
 import matplotlib.pyplot as plt
+
 df=pd.read_csv("SuperStore.csv")
+
 df
+
 df.info()
+
 df.describe()
+
 df.isnull().sum()
+
 df['Postal Code'] = df["Postal Code"].fillna(df['Postal Code'].mode()[0])
+
 df.isnull().sum()
+
 df.dtypes
+
 sns.scatterplot(df['Row ID'],df['Sales'])
+
 states=df.loc[:,["State","Sales"]]
+
 states=states.groupby(by=["State"]).sum().sort_values(by="Sales")
+
 plt.figure(figsize=(17,7))
+
 sns.barplot(x=states.index,y="Sales",data=states)
+
 plt.xticks(rotation = 90)
+
 plt.xlabel=("STATES")
+
 plt.ylabel=("SALES")
+
 plt.show()
+
 states=df.loc[:,["State","Row ID"]]
+
 states=states.groupby(by=["State"]).sum().sort_values(by="Row ID")
+
 plt.figure(figsize=(17,7))
+
 sns.barplot(x=states.index,y="Row ID",data=states)
+
 plt.xticks(rotation = 90)
+
 plt.xlabel=("STATES")
+
 plt.ylabel=("ROW ID")
+
 plt.show()
+
 states=df.loc[:,["Segment","Row ID"]]
+
 states=states.groupby(by=["Segment"]).sum().sort_values(by="Row ID")
+
 sns.barplot(x=states.index,y="Row ID",data=states)
+
 plt.xticks(rotation = 90)
+
 plt.xlabel=("SEGMENT")
+
 plt.ylabel=("ROW ID")
+
 plt.show()
+
 sns.barplot(df['Sales'],df['Ship Mode'],hue=df['Region'])
+
 df.corr()
+
 sns.heatmap(df.corr(),annot=True)
 
 OUTPUT
@@ -98,7 +133,7 @@ Checking the null values and Cleaning it
 
 DATA TYPES
 
-![image](https://user-images.githubusercontent.com/119476060/230761100-992b860f-d97b-4087-a2f0-922e8159a093.png
+![image](https://user-images.githubusercontent.com/119476060/230761365-e92e5040-3ea6-4cac-8526-ebf72530d3bf.png)
 
 SCATTERPLOT
 
